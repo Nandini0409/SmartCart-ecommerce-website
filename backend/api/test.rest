@@ -1,0 +1,12 @@
+GET https://api.razorpay.com/v1/orders
+
+
+###
+POST  http://localhost:3000/payment
+Content-Type: application/json
+
+{"totalAmount" : 3000}
+
+
+###
+get http://localhost:3000/test
