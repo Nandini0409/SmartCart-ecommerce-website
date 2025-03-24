@@ -7,8 +7,8 @@ export default async function checkout(amount) {
       body: JSON.stringify({ totalAmount: amount }),
     })
     const response = await request.json()
-    const { name, email } = response.customerInfo
     console.log(response)
+    const { name, email } = response.customerInfo
 
     const options = {
       "key": "rzp_test_qBZhkEUGbgJgDd",
@@ -26,7 +26,7 @@ export default async function checkout(amount) {
         "address": "Razorpay Corporate Office"
       },
       "theme": {
-        "color": "#3399cc"
+        "color": "#007bff"
       },
       "handler": async function (res) {
         let request = await fetch('http://localhost:5000/verifyOrder', {

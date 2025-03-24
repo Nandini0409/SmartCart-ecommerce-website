@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css_files/common.css">
+  <link rel="stylesheet" href="css_files/userRegistration.css">
+</head>
+
+<body>
+  <div class="notificationPopup"><p></p></div>
+  <div class="container" id="signinBlock">
+    <div class="imageContainer">
+      <img src="images/login.svg" alt="user">
+    </div>
+    <div class="formContainer">
+      <h2>Login to your Account</h2>
+      <form id="signinForm">
+        <div>
+          <label for="email">Email:</label>
+          <input required name="email" id="loginEmail" type="email" />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input required name="password" id="loginPassword" type="password" />
+        </div>
+        <div>
+          
+          <p>New Customer?<a href="userRegistration.html?class=signup"> Sign Up</a> from here.</p>
+          <button class="userBtn" type="submit">LOG IN</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container" id="signupBlock">
+    <div class="imageContainer">
+      <img src="images/signup.svg" alt="user">
+    </div>
+    <div class="formContainer">
+      <h2>Create an Account</h2>
+      <p>password should be minimum 8 character long and contain atleast 1 special character.</p>
+      <form id="signupForm">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" required name="name" type="text" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="signupEmail" required type="email" name="email" />
+        </div>
+        <div>
+          <label for="password">Password</label>
+          <input id="signupPassword" required type="password" name="password" />
+        </div>
+        <div>
+          <p>Already have an account?<a href="userRegistration.html?class=login"> Login</a> from here.</p>
+          <button class="userBtn" type="submit">Create Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+  <script type="module" src="js_files/userRegistration.js" defer></script>
+</body>
+
+</html>

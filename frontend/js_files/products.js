@@ -1,89 +1,68 @@
-import {addToWishlist} from './wishlist.js';
-import {addToCart} from './cart.js';
+import { addToWishlist, checkIfAdded } from './wishlist.js';
+import { addToCart } from './cart.js';
+import { getProducts } from './module.js';
+import { createProductCard, createProductDetailCard } from './dynamicUi.js';
 
-const productList = document.getElementById('product')
+const productList = document.getElementById('productList')
+const productDetails = document.getElementById('productDetails')
 const params = new URLSearchParams(window.location.search)
 let category = params.get('class')
 
 
 document.addEventListener('DOMContentLoaded', async () => {
-  console.log('hiii')
-  const data = await getProducts()
+  const data = await getProducts(category)
   await showAllProducts(data)
-  await showProductDetails(data)
 })
 
-const getProducts = async () => {
-  try {
-    const response = await fetch(`http://localhost:5000/products/${category}`)
-    if (!response.ok) {
-      throw new Error(`${response.status} - ${response.message}`)
-    }
-    const data = await response.json()
-    return data
-  }
-  catch {
-    errorHandler()
-  }
-}
-
-const showAllProducts = (data) => {
-  productList.innerHTML = data.map(product => {
-    return `<div id="${product._id}">
-    <button id="wishlist${product._id}" class="wishlistBtn">Add to wishlist</button>
-    <img src="images/products/${product.image}" alt="${product.name}">
-    <h3>${product.name}</h3>
-    <p>$${product.price}</p>
-    <button id="cart${product._id}">Add to cart</button>
-    </div>`
-  }).join('')
-  productList.querySelectorAll('div').forEach(div => {
+const showAllProducts = async (data) => {
+  productDetails.style.display = 'none'
+  data.forEach(product => {
+    createProductCard(product, productList)
+  })
+  let divArray = productList.querySelectorAll('div')
+  for(const div of divArray){
     const wishlistBtn = document.getElementById(`wishlist${div.id}`)
     const cartBtn = document.getElementById(`cart${div.id}`)
-    const currentProduct = data.find(product => product._id === div.id)
+    const icon = div.querySelector('.heartIcon')
+    let currentProduct = await showProductDetails(div, data)
+    console.log(currentProduct)
+    if (checkIfAdded(currentProduct.id)) {
+      icon.classList.remove("far");
+      icon.classList.add("fas");
+    }
+    else {
+      icon.classList.remove("fas");
+      icon.classList.add("far");
+    }
     addToWishlist(currentProduct, wishlistBtn)
     addToCart(currentProduct, cartBtn)
-  })
+  }
+ 
 }
 
-const showProductDetails = async (data) => {
-  const productListChildern = Array.from(productList.querySelectorAll('div'))
-  productListChildern.forEach(div => {
-    const currentProduct = data.find(product => product._id === div.id)
-    div.addEventListener('click', (e) => {
-      window.history.pushState({}, '', `product.html?id=${div.id}`)
-      productList.innerHTML = div.innerHTML + `
-      <button>Buy Now</button>
-      <p>${currentProduct.description.features}</p>
-      <p>${currentProduct.description.deliveryInfo}</p>`
-      const wishlistBtn = document.getElementById(`wishlist${currentProduct._id}`)
-      const cartBtn = document.getElementById(`cart${currentProduct._id}`)
-      addToWishlist(currentProduct, wishlistBtn)
-      addToCart(currentProduct, cartBtn)
-    })
+const showProductDetails = async (div, data) => {
+  const currentProduct = data.find(product => product.id === div.id)
+  div.addEventListener('click', (e) => {
+    window.history.pushState({}, '', `product.html?id=${div.id}`)
+    productList.style.display = 'none'
+    productDetails.style.display = 'flex'
+    createProductDetailCard(currentProduct, productDetails)
+    const icon = productDetails.querySelector('.heartIcon')
+    const wishlistBtn = document.querySelector('.singleHeart')
+    const cartBtn = document.querySelector(`.singleCartBtn`)
+    addToWishlist(currentProduct, wishlistBtn)
+    addToCart(currentProduct, cartBtn)
+    if (checkIfAdded(currentProduct.id)) {
+      icon.classList.remove("far");
+      icon.classList.add("fas");
+    }
+    else {
+      icon.classList.remove("fas");
+      icon.classList.add("far");
+    }
   })
+  return currentProduct
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

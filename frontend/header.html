@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCart Header</title>
+  <link rel="stylesheet" href="./css_files/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="./images/smartCart.png" alt="SmartCart Logo">
+      <span>Smart<span class="cart-text">Cart</span></span>
+    </div>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="products.html?class=allProduct" id="allProduct">Products</a>
+          <ul class="dropdown-menu">
+            <li><a id="electronics" href="products.html?class=electronics">Electronics</a></li>
+            <li><a id="fashion" href="products.html?class=fashion">Fashion</a></li>
+            <li><a id="home-kitchen" href="products.html?class=home-kitchen">Home & Kitchen</a></li>
+            <li><a id="beauty" href="products.html?class=beauty">Beauty</a></li>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li>
+          <div class="signin-dropdown">
+            <a href="userRegistration.html?class=login">Login</a>
+            <div class="signin-menu">
+              <p>New customer? <a href="userRegistration.html?class=signup">Sign Up</a></p>
+            </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-right">
+
+      <button id="wishlist" class="btnIcon"><i width="80px" class="fa-solid fa-heart"
+          style="color: #0179fd;"></i></button>
+      <button class="btnIcon" id="cart"><i class="fa-solid fa-cart-shopping" style="color: #0179fd;"></i></button>
+      <button id="menu" class="btnIcon"><i class="fa-solid fa-bars" style="color: #0179fd;"></i></button>
+
+    </div>
+    </div>
+  </header>
+  <div class="overlay" id="overlay"></div>
+  <section class="popup" id="cartPopup"><button id="cartExitBtn" class="exitBtns"><i class="fa-solid fa-xmark"></i></button></section>
+  <section class="popup" id="wishlistPopup"><button id="wishlistExitBtn" class="exitBtns"><i class="fa-solid fa-xmark"></i></button></section>
+
+  <div class="notificationPopup"><p></p></div>
+
+  <script defer type="module" src="js_files/common.js"></script>
+</body>
+
+</html>
