@@ -5,135 +5,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <link rel="stylesheet" href="css_files/common.css">
+  <link rel="stylesheet" href="css_files/index.css">
 </head>
 
 <body>
 
-  <header>
-    <nav aria-label="main navigation">
-      <div>
-        <img src="logo.png" alt="logo">
-      </div>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="products.html?class=allProduct" id="allProduct">Products</a></li>
-        <li><a href="#categories">Categories</a></li>
-        <li><a href="#trending">Trending</a></li>
-      </ul>
-      <div>
-        <button id="wishlist"><img src="wishlist.png" alt="wishlist"></button>
-        <button id="cart"><img src="cart.png" alt="cart"></button>
-      </div>
-      <div>
-        <a href="signin.html">Sign In</a>
-        <p>New customer? Sign Up from here</p>
-        <a href="signup.html">Sign Up</a>
-      </div>
-    </nav>
-  </header>
-
+  <section id="headerPlaceholder"></section>
   <main>
-
-    <section id="cartPopup"></section>
-    <section id="wishlistPopup"></section>
+    <div class="notificationWrapper">
+      <div class="notificationPopup"><p></p></div>
+    </div>
+    
 
     <section id="hero">
-      <h1>Shop the Best Deals, Anytime, Anywhere with <strong>SmartCart</strong>!</h1>
-      <p>Explore Our Top Categories</p>
-      <button>Shop Now</button>
+      <div>
+        <h1>Shop Anytime, Anywhere with <strong>Smart<span style="color: #0179fd;">Cart</span></strong></h1>
+        <p>Explore Our Top Categories</p>
+        <button id="shopNow">Shop Now</button>
+      </div>
     </section>
 
     <section id="categories">
       <h2>Explore Our Top Categories</h2>
-      <article>
-        <a id="electronics" href="products.html?class=electronics">
-          <img src="electronics.png" alt="electronics">
-          <h3>Electronics</h3>
-          <p>Get the best deals on electronics</p>
-        </a>
+      <div id="categoryContainer">
+        <article>
+          <a id="electronics" href="products.html?class=electronics">
+            <div class="img-container"><img src="./images/electronics.webp" alt="electronics"></div>
+            <h3>Electronics</h3>
+            <p>Get the best deals on electronics</p>
+          </a>
+        </article>
+        <article>
+          <a id="fashion" href="products.html?class=fashion">
+            <div class="img-container"><img src="./images/fashion.webp" alt="fashion"></div>
+            <h3>Fashion</h3>
+            <p>Get the best deals on fashion</p>
+          </a>
+        </article>
+        <article>
+          <a id="home-kitchen" href="products.html?class=home-kitchen">
+            <div class="img-container"><img src="./images/home&kitchen.webp" alt="electronics"></div>
+            <h3>Home & Kitchen</h3>
+            <p>Get the best deals on home decors & kitchen appliances</p>
+          </a>
+        </article>
+        <article>
+          <a id="beauty" href="products.html?class=beauty">
+            <div class="img-container"><img src="./images/beauty.webp" alt="electronics"></div>
+            <h3>Beauty</h3>
+            <p>Get the best deals on beauty products</p>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <article id="contactInfoContainer">
+        <div>
+          <h2>Get in Touch</h2>
+          <p>Have questions or need help? Reach out to us, and we'll get back to you as soon as possible.</p>
+
+          <div id="contactInfo">
+            <p>
+              <i class="fa-solid fa-envelope" style="color: #0c1c27;"></i> : <a
+                href="mailto:smartCart@email.com">smartCart@email.com</a>
+            </p>
+            <p><i class="fa-solid fa-phone" style="color: #0c1c27;"></i> : +91 1234567890</p>
+          </div>
+        </div>
+        <div>
+          <div id="socialLinks">
+            <a href="https://facebook.com/yourpage" target="_blank"><i class="fa-brands fa-facebook"
+                style="color: #0c1c27;"></i></a>
+            <a href="https://twitter.com/yourpage" target="_blank"><i class="fa-brands fa-x-twitter"
+                style="color: #0c1c27;"></i></a>
+            <a href="https://instagram.com/yourpage" target="_blank"><i class="fa-brands fa-instagram"
+                style="color: #0c1c27;"></i></a>
+            <a href="https://wa.me/yourwhatsappnumber" target="_blank" id="whatsappChat">
+              <i class="fa-brands fa-whatsapp" style="color: #0c1c27;"></i>
+            </a>
+          </div>
+        </div>
       </article>
-      <article>
-        <a id="fashion" href="products.html?class=fashion">
-          <img src="fashion.png" alt="fashion">
-          <h3>Fashion</h3>
-          <p>Get the best deals on fashion</p>
-        </a>
-      </article>
-      <article>
-        <a id="home-kitchen" href="products.html?class=home-kitchen">
-          <img src="products.png" alt="home&kitchen">
-          <h3>Home & Kitchen</h3>
-          <p>Get the best deals on home decors & kitchen appliances</p>
-        </a>
-      </article>
-      <article>
-        <a id="beauty" href="products.html?class=beauty">
-          <img src="prodcuts.png" alt="beauty">
-          <h3>Beauty</h3>
-          <p>Get the best deals on beauty products</p>
-        </a>
+      <article id="contactFormContainer">
+        <form id="contactForm">
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+          </div>
+          <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+          </div>
+
+
+
+          <button id="submitBtn" type="submit">Send Message</button>
+        </form>
       </article>
     </section>
 
-    <section id="trending">
-      <h2>Top Deals You Can't Miss!</h2>
-      <article id="deal1"></article>
-      <article id="deal2"></article>
-      <article id="deal3"></article>
-    </section>
-
-    <section id="testimonials">
-      <h2>Hear What Our Customers Say!</h2>
-      <article id="testimonial1">
-        <blockquote>
-          <p>SmartCart is the best online shopping platform I have ever used. It is so easy to use and has the best
-            deals!</p>
-          <cite>-Sara Shah</cite>
-        </blockquote>
-      </article>
-      <article id="testimonial2">
-        <blockquote>
-          <p>On this site I can easily found everything all at one place.</p>
-          <cite>-Aman Joshi</cite>
-        </blockquote>
-      </article>
-      <article id="testimonial3">
-        <blockquote>
-          <p>Love the deals!</p>
-          <cite>-Jyoti Sinha</cite>
-        </blockquote>
-      </article>
-    </section>
   </main>
 
-  <footer>
-    <section>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#categories">Categories</a></li>
-        <li><a href="#trending">Trending</a></li>
-      </ul>
-      <ul>
-        <li>Track and order</li>
-        <li>Legal and privacy</li>
-        <li>Contact</li>
-        <li>Shopping and returns</li>
-      </ul>
-    </section>
-    <section>
-      <p>Stay Connected: Subscribe for Updates and Offers</p>
-      <form>
-        <label for="email">Enter Your Email Address</label>
-        <input type="email" id="email" placeholder="Email Address">
-        <img src="arrow.png" alt="arrow">
-      </form>
-      <button>Back to Top</button>
-    </section>
-  </footer>
+  <section id="footerPlaceholder"></section>
 
-  <script type="module" src="js_files/index.js"></script>
+  <script defer type="module" src="js_files/common.js"></script>
+  <script defer type="module" src="js_files/index.js"></script>
+
 </body>
 
 </html>

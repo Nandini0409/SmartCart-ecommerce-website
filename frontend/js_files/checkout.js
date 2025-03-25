@@ -1,4 +1,6 @@
-export default async function checkout(amount) {
+import { displayNotification } from "./module.js"
+
+export default async function checkout(amount, notificationPopup) {
   try {
     const request = await fetch('http://localhost:5000/createOrder', {
       method: 'post',
@@ -7,8 +9,15 @@ export default async function checkout(amount) {
       body: JSON.stringify({ totalAmount: amount }),
     })
     const response = await request.json()
-    const { name, email } = response.customerInfo
     console.log(response)
+    if(response.status === 401){
+      displayNotification('You must login in order to proceed with checkout!', notificationPopup)
+      setTimeout(() => {
+        window.location.href='userRegistration.html?class=login'
+      }, 6000);
+      return;
+    }
+    const { name, email } = response.customerInfo
 
     const options = {
       "key": "rzp_test_qBZhkEUGbgJgDd",
@@ -26,14 +35,20 @@ export default async function checkout(amount) {
         "address": "Razorpay Corporate Office"
       },
       "theme": {
-        "color": "#3399cc"
+        "color": "#007bff"
       },
       "handler": async function (res) {
-        let request = await fetch('http://localhost:5000/verifyOrder', {
+        let response = await fetch('http://localhost:5000/verifyOrder', {
           method: 'post',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...res, orderId: response.orderId })
         })
+        if(response.status === 200){
+          displayNotification("Payment successful! Thank you for your order.", notificationPopup);
+        }
+        else if(response.status === 400){
+          displayNotification("Payment verification failed. Please contact support.", notificationPopup);
+        }
       }
     }
     const rzp1 = new Razorpay(options);

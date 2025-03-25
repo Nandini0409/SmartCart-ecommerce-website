@@ -9,6 +9,7 @@ const signup = require('./api/routeHandlers/signup');
 const signin = require('./api/routeHandlers/signin');
 const createOrder = require('./api/routeHandlers/createOrder');
 const verifyOrder = require('./api/routeHandlers/verifyOrder');
+const autoMail = require('./api/routeHandlers/autoMailing');
 
 
 app.use(express.json())
@@ -26,6 +27,8 @@ app.post('/signin', (req, res) => signin(req, res));
 app.post('/createOrder', (req, res) => createOrder(req, res));
 
 app.post('/verifyOrder', (req, res) => verifyOrder(req, res));
+
+app.post('/autoMail', (req, res) => autoMail(req, res));
 
 app.listen(process.env.PORT, () => {
   console.log('Server is running on port', process.env.PORT)
