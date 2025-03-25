@@ -25,8 +25,11 @@ const contactFormHandler = () => {
     if (mailStatus === 422) {
       displayNotification('Provided email address is non-existent! Recheck your email address.', notificationPopup)
     }
-    else{
+    else if(mailStatus === 200){
       displayNotification('Thanks for getting in touch! 😊 We’ve received your message and will respond as soon as possible. Stay tuned!', notificationPopup)
+    }
+    else{
+      displayNotification('some error occurred! please try again after some time.', notificationPopup)
     }
   })
 }

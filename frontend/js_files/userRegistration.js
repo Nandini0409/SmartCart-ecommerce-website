@@ -31,7 +31,7 @@ const signin = () => {
     e.preventDefault()
     const formData = new FormData(form)
     const userData = Object.fromEntries(formData.entries())
-    try{const response = await fetch('http://localhost:5000/signin', {
+    try{const response = await fetch('http://localhost:5050/signin', {
       method: 'post',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
@@ -82,7 +82,7 @@ const signup = () => {
       return;
     }
     try{
-      const response = await fetch('http://localhost:5000/signup', {
+      const response = await fetch('http://localhost:5050/signup', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)

@@ -1,6 +1,6 @@
 export async function getProducts(category){
   try {
-    const response = await fetch(`http://localhost:5000/products/${category}`)
+    const response = await fetch(`http://localhost:5050/products/${category}`)
     if (!response.ok) {
       throw new Error(`${response.status} - ${response.message}`)
     }
@@ -20,15 +20,13 @@ export async function getProducts(category){
 export async function mailListRequest (mailInfo, mailType){
   try{
     console.log('sendding mail request')
-    const response = await fetch('http://localhost:5000/autoMail', {
+    const response = await fetch('http://localhost:5050/autoMail', {
       method: 'post',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...mailInfo, emailType: mailType })
     })
-    if(response.status === 422){
-      return 422
-    }
+    return response.status
   }
   catch(e){
     console.log(e)

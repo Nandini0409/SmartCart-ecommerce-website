@@ -1,7 +1,7 @@
 const verifyEmail = async (email) => {
   try{
     console.log('mail is beign varified')
-    const response = await fetch(`http://apilayer.net/api/check?access_key=b72168a46a3578eefbf6a4dd692ef641&email=${email}`)
+    const response = await fetch(`http://apilayer.net/api/check?access_key=${process.env.MAILBOX_LAYER_APIKEY}&email=${email}`)
     let jsonResponse = await response.json()
     console.log(jsonResponse.mx_found, jsonResponse.smtp_check)
     if(jsonResponse.mx_found && jsonResponse.smtp_check){

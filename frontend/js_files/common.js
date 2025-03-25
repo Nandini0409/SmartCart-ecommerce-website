@@ -99,10 +99,10 @@ const displayCart = () => {
       cartPopup.style.display = 'none'
       overlay.classList.remove("active");
     }
-    document.getElementById('checkoutBtn').addEventListener('click', (e) => {
-      e.preventDefault()
+
+    if(e.target.id === 'checkoutBtn'){
       checkout(totalPrice, notificationPopup)
-    })
+    }
   })
 }
 
