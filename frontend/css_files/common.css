@@ -242,7 +242,7 @@ footer {
   transition: background 0.3s ease;
 }
 
-.footer-right:hover{
+.footer-right:hover {
   transform: scale(1.05);
   transition: 0.3s ease;
 }
@@ -299,8 +299,8 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2); 
-  backdrop-filter: blur(8px); 
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
   z-index: 105;
   display: none;
 }
@@ -309,7 +309,7 @@ footer {
   display: block;
 }
 
-.popup{
+.popup {
   display: none;
   z-index: 150;
   position: fixed;
@@ -328,7 +328,7 @@ footer {
   text-align: center;
 }
 
-.exitBtns{
+.exitBtns {
   position: absolute;
   display: flex;
   align-items: center;
@@ -346,23 +346,23 @@ footer {
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-.exitBtns i{
+.exitBtns i {
   font-size: 15px;
 }
 
-h4{
+h4 {
   font-size: 1.3rem;
   margin-bottom: 20px;
   font-weight: 600;
   color: var(--black);
 }
 
-#cartPopup h3{
+#cartPopup h3 {
   font-size: 13px;
   font-weight: 500;
 }
 
-.popup article{
+.popup article {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -376,7 +376,7 @@ h4{
 }
 
 article img {
-  width: 60px; 
+  width: 60px;
   flex-shrink: 0;
 }
 
@@ -408,7 +408,7 @@ article p {
 }
 
 article button {
-  width: 25px; 
+  width: 25px;
   border: none;
   border-radius: 2px;
   cursor: pointer;
@@ -416,13 +416,13 @@ article button {
 }
 
 #removeBtn {
-  flex-shrink: 0; 
+  flex-shrink: 0;
   background: none;
   font-size: 20px;
   background: white;
 }
 
-#orderSummary{
+#orderSummary {
   width: 100%;
   align-items: center;
   display: flex;
@@ -435,26 +435,27 @@ article button {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-#orderSummary p{
+#orderSummary p {
   font-size: 17px;
   font-weight: bold;
 }
 
-#checkoutBtn{
+#checkoutBtn {
   color: white;
-  background : linear-gradient(to right, rgb(130, 164, 209), rgb(53, 140, 223));
+  background: linear-gradient(to right, rgb(130, 164, 209), rgb(53, 140, 223));
   border: none;
   padding: 10px 40px;
   border-radius: 5px;
 }
 
-textarea:focus,input:focus{
+textarea:focus,
+input:focus {
   background-color: #dfebfd8c;
   outline: none;
   border: 1px solid rgb(216, 202, 202);
 }
 
-#newsletterForm input:focus{
+#newsletterForm input:focus {
   background-color: rgba(39, 39, 37, 0.349);
   color: white;
 }
@@ -464,16 +465,37 @@ textarea:focus,input:focus{
 
 
 /* notification styling */
-.notificationPopup{
-  display: none;
-  max-width: 300px;
-  background-color: white;
-  color: var(--primary-red);
-  text-align: center;
+.notificationWrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
   margin: auto;
-  position: sticky;
-  padding: 8px;
-  border-radius: 5px;
+}
+
+.notificationPopup {
+  /* display: none; */
+  max-width: 350px;
+  top: 60px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+  background: linear-gradient(90deg, #007BFF, #0056b3);
+  text-align: center;
+  font-weight: 500;
+  font-size: 15px;
+  position: fixed;
+  padding: 10px 15px;
+  border-radius: 8px;
+  z-index: 200;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.notificationPopup.show{
+  /* display: flex; */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 
@@ -582,51 +604,62 @@ textarea:focus,input:focus{
     margin: 20px auto;
     padding: 20px 10px;
   }
-  #cartPopup h4{
+
+  #cartPopup h4 {
     text-align: left;
     padding-left: 8px;
   }
-  h4{
+
+  h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
   }
+
   #cartPopup h3 {
     font-size: 10px;
     line-height: 0.7rem;
   }
-  .popup p{
+
+  .popup p {
     font-size: 10px;
   }
-  .popup img{
+
+  .popup img {
     width: 40px;
   }
+
   #quantityBtns {
     gap: 1px;
   }
+
   #quantityBtns button {
     padding: 1px 3px;
     width: 18px;
   }
-  #wishlistPopup{
+
+  #wishlistPopup {
     height: 300px;
   }
-  .popup article{
+
+  .popup article {
     width: 100%;
     height: 60px;
     padding: 5px;
     gap: 5px;
   }
-  #orderSummary{
+
+  #orderSummary {
     flex-direction: column;
     gap: 10px;
     padding: 10px;
     margin-bottom: 20px;
   }
-  #orderSummary p{
+
+  #orderSummary p {
     font-size: 14px;
   }
-  
-  #checkoutBtn{
+
+  #checkoutBtn {
     width: 100%;
     padding: 10px 10px;
     border-radius: 5px;
@@ -666,9 +699,3 @@ textarea:focus,input:focus{
     font-size: 14px;
   }
 }
-
-
-
-
-
-

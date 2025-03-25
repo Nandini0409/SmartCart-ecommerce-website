@@ -6,8 +6,9 @@ import { createProductCard, createProductDetailCard } from './dynamicUi.js';
 const productList = document.getElementById('productList')
 const productDetails = document.getElementById('productDetails')
 const params = new URLSearchParams(window.location.search)
+const notificationPopup = document.querySelector('.notificationPopup')
 let category = params.get('class')
-
+console.log(notificationPopup)
 
 document.addEventListener('DOMContentLoaded', async () => {
   const data = await getProducts(category)
@@ -20,12 +21,11 @@ const showAllProducts = async (data) => {
     createProductCard(product, productList)
   })
   let divArray = productList.querySelectorAll('div')
-  for(const div of divArray){
+  for (const div of divArray) {
     const wishlistBtn = document.getElementById(`wishlist${div.id}`)
     const cartBtn = document.getElementById(`cart${div.id}`)
     const icon = div.querySelector('.heartIcon')
     let currentProduct = await showProductDetails(div, data)
-    console.log(currentProduct)
     if (checkIfAdded(currentProduct.id)) {
       icon.classList.remove("far");
       icon.classList.add("fas");
@@ -35,9 +35,9 @@ const showAllProducts = async (data) => {
       icon.classList.add("far");
     }
     addToWishlist(currentProduct, wishlistBtn)
-    addToCart(currentProduct, cartBtn)
+    addToCart(currentProduct, cartBtn, notificationPopup)
   }
- 
+
 }
 
 const showProductDetails = async (div, data) => {
@@ -51,7 +51,7 @@ const showProductDetails = async (div, data) => {
     const wishlistBtn = document.querySelector('.singleHeart')
     const cartBtn = document.querySelector(`.singleCartBtn`)
     addToWishlist(currentProduct, wishlistBtn)
-    addToCart(currentProduct, cartBtn)
+    addToCart(currentProduct, cartBtn, notificationPopup)
     if (checkIfAdded(currentProduct.id)) {
       icon.classList.remove("far");
       icon.classList.add("fas");

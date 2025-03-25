@@ -36,12 +36,10 @@ export async function mailListRequest (mailInfo, mailType){
 }
 
 
-export function displayNotification(message, popup){
-  const notificationPopup = document.querySelector('.notificationPopup')
+export function displayNotification(message, notificationPopup){
   notificationPopup.innerHTML = `<p>${message}</p>`
-  notificationPopup.style.display = 'flex'
-
+  notificationPopup.classList.add('show')
   setTimeout(() => {
-    notificationPopup.style.display = 'none'
-  }, 10000);
+    notificationPopup.classList.remove('show')
+  }, 5000);
 }

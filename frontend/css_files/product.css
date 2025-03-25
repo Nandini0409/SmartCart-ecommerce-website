@@ -103,45 +103,44 @@ button {
   background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
 }
 
-#productDetails {
+
+ #productDetails article{
   display: flex;
   justify-content: center;
   margin: 40px auto;
-  align-items: stretch;
-  max-width: 640px;
+  max-width: 700px;
   height: 350px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.productImageContainer {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ .productImageContainer {
   position: relative;
+  flex: 1;
 }
 
 .productImageContainer img {
-  width: 100%;
+  margin: 15px;
+  width: 90%;
   object-fit: cover;
-  height: 100%;
+  height: 90%;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 .singleHeart {
   position: absolute;
-  left: 20px;
-  top: 15px;
+  left: 25px;
+  top: 25px;
 }
 
 .productDetailContainer {
+  flex: 1;
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 100%;
-  padding: 20px;
+  height: 80%;
+  padding: 20px 10px;
+  margin-top: 20px;
   align-items: flex-start;
   justify-content: flex-start;
   background-color: white;
@@ -149,31 +148,35 @@ button {
 }
 
 .productDetailContainer h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.6rem;
+  color: #222;
   margin-bottom: 10px;
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .productDetailContainer p {
-  line-height: 1.3rem;
   font-size: 1rem;
-  padding: 5px 5px 5px 15px;
+  color: #555;
+  font-weight: 400;
+  line-height: 1.3rem;
+  margin-bottom: 8px;
 }
 
 .productDetailContainer span {
-  line-height: 1.4rem;
+  font-size: 1.1rem;
   font-weight: bold;
+  color: #000;
+  margin-bottom: 10px;
 }
 
 .productDetailContainer button {
-  width: 40%;
-  font-size: 0.8rem;
-  margin: 10px 0 10px 15px;
+  width: 90%;
+  font-size: 1rem;
+  margin: 10px 0 10px 5px;
   align-self: flex-start;
 }
-
-
-
+ 
 
 
 
@@ -202,45 +205,59 @@ button {
     top: 14px;
     right: 27px;
   }
-
   #productDetails{
-    flex-direction: column;
-    max-width: 450px;
-    height: auto;
-    padding: 20px;
-    padding-top: 40px;
+    margin: 30px ;
   }
+}
 
+@media screen and (max-width: 650px){
+
+  #productDetails article{
+    flex-direction: column;
+    margin: auto;
+    padding: 0;
+    height: auto;
+  }
   .productImageContainer{
-    width: 90%;
-    height: 370px;
-    margin: auto 20px;
+    height: 450px;
   }
 
   .productDetailContainer{
-    width: 90%;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 10px;
   }
 
-  .productDetailContainer p{
-    font-size: 1.2rem;
+  .productImageContainer img{
+    width: 100%;
+    height: auto;
+    margin: 0;
   }
-
-  #productDetails button{
-    width: 50%;
-    padding: 10px;
-    font-size: 1.2rem;
-  }
-  
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 450px) {
   #productDetails{
-    max-width: 100%;
+    margin: 0 ;
+  }
+  #productDetails article{
+    width: 100%;
+    flex-direction: column;
     margin: 0;
     padding: 0;
-    padding-top: 30px;
     height: auto;
   }
+
+  .productImageContainer{
+    width: 100%;
+    height: 450px;
+  }
+
+  .productDetailContainer{
+    width: 100%;
+    margin-top: 0;
+    padding-top: 10px;
+  }
+
 }
 
 @media screen and (max-width: 400px) {
@@ -254,10 +271,10 @@ button {
     padding: 10px;
   }
 
-  #productList img{
+  #productList img {
     width: 80%;
   }
-  
+
   #productList div h3 {
     font-size: 0.8rem;
     line-height: 0.8rem;
@@ -277,9 +294,7 @@ button {
     padding: 5px 8px;
   }
 
-  /* #productDetails{
-    width: 90%;
-  } */
+
 }
 
 
@@ -289,6 +304,3 @@ button {
 
 
 /* <a href="https://www.flaticon.com/free-icons/wishlist" title="wishlist icons">Wishlist icons created by nahumam - Flaticon</a> */
-
-
-

@@ -87,12 +87,13 @@ const signup = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)
       })
+      console.log(response.status)
     if (response.status === 201) {
       mailListRequest(userData, 'accountCreationConfirmation')
-      window.location.href = "userRegistration.html?class=login"
+      displayNotification(`Account Successfully created! Log in to your account to continue with your shopping.`, notificationPopup)
       setTimeout(() => {
-        displayNotification(`Account Successfully created! Log in to your account to continue with your shopping. <a href="userRegistration.html?class=login">Login</a>`, notificationPopup)
-      }, 3000);
+        window.location.href = "userRegistration.html?class=login"
+      }, 8000);
     }
     else if (response.status === 409) {
       displayNotification('This email is already registered! Try login instead.', notificationPopup)

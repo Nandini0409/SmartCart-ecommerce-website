@@ -101,7 +101,7 @@ const displayCart = () => {
     }
     document.getElementById('checkoutBtn').addEventListener('click', (e) => {
       e.preventDefault()
-      checkout(totalPrice)
+      checkout(totalPrice, notificationPopup)
     })
   })
 }
@@ -122,7 +122,6 @@ const backToTop = () => {
 }
 
 const newsletterFormHandler = async () => {
-  document.getElementById('email').focus()
   const form = document.getElementById('newsletterForm')
   form.addEventListener('submit', async (e) => {
     e.preventDefault()

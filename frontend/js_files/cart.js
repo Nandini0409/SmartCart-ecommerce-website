@@ -1,4 +1,5 @@
 let cart = JSON.parse(localStorage.getItem('cart')) || []
+import { displayNotification } from "./module.js"
 
 export function removeFromCart(id) {
   cart = cart.filter((product) => product.id !== id)
@@ -34,7 +35,8 @@ const checkIfAlreadyAdded = (currentProduct) => {
   return product
 }
 
-export function addToCart(currentProduct, btn) {
+export function addToCart(currentProduct, btn, notificationPopup) {
+  console.log(notificationPopup)
   btn.addEventListener('click', (e) => {
     e.stopPropagation()
     let productFoundInCart = checkIfAlreadyAdded(currentProduct)
@@ -48,6 +50,7 @@ export function addToCart(currentProduct, btn) {
           quantity: 1
         }]
         localStorage.setItem('cart', JSON.stringify(cart))
+        displayNotification('Added to cart! You can continue shopping or view cart', notificationPopup)
       }
       catch (e) {
         console.log(e)
@@ -55,6 +58,7 @@ export function addToCart(currentProduct, btn) {
     }
     else {
       increaseQuantity(productFoundInCart.id)
+      displayNotification("Already added in cart! increased item's quantity by 1.", notificationPopup)
     }
   })
 }

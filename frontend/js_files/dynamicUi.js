@@ -12,9 +12,8 @@ export function createProductCard(product, productList) {
 }
 
 export function createProductDetailCard(product, productDetails) {
-  let productDetailCard = document.createElement("div")
-  productDetailCard.setAttribute("class", "productImageContainer")
-  productDetailCard.innerHTML = `<button class="wishlistBtn singleHeart"><i class="heartIcon far fa-heart" style="color: #0179fd;"></i></button>
+  let productDetailCard = document.createElement("article")
+  productDetailCard.innerHTML = `<div class="productImageContainer"><button class="wishlistBtn singleHeart"><i class="heartIcon far fa-heart" style="color: #0179fd;"></i></button>
   <img class="productListImg" src="./images/serum.webp" alt="${product.name}">
   </div>
   <div class="productDetailContainer">

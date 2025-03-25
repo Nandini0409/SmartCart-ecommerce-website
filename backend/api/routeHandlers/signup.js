@@ -19,7 +19,7 @@ const signup = async (req, res) => {
       return res.status(409).json({ message: 'The email is already registered! try signing in instead.' })
     }
     const emailStatus = await verifyEmail(email)
-    if (emailStatus !== 'valid') {
+    if (emailStatus === 422) {
       return res.status(422).json({ "error": "Email address does not exist" })
     }
     const newCustomer = new Customer(req.body)
