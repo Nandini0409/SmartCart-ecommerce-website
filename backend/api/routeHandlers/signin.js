@@ -19,12 +19,14 @@ const signin = async (req, res) => {
     const token = jwt.sign({ id: customerFoundInDb._id }, process.env.SECRET_KEY, { expiresIn: '7d' })
     res.cookie('ecommerce_jwt', token,{
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 30 * 24 * 60 * 60 * 1000,
     })
     res.cookie('ecommerce_userInfo', JSON.stringify({ name: customerFoundInDb.name, email: customerFoundInDb.email }), {
       httpOnly: true,
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000
     })
     console.log('Cookies set:', res.getHeaders()['set-cookie'])

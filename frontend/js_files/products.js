@@ -5,10 +5,9 @@ import { createProductCard, createProductDetailCard } from './dynamicUi.js';
 
 const productList = document.getElementById('productList')
 const productDetails = document.getElementById('productDetails')
-const params = new URLSearchParams(window.location.search)
-const notificationPopup = document.querySelector('.notificationPopup')
-let category = params.get('class')
-console.log(notificationPopup)
+const urlParams = new URLSearchParams(window.location.search)
+const productNotification = document.querySelector('.notificationPopup')
+let category = urlParams.get('class')
 
 document.addEventListener('DOMContentLoaded', async () => {
   const data = await getProducts(category)
@@ -35,7 +34,7 @@ const showAllProducts = async (data) => {
       icon.classList.add("far");
     }
     addToWishlist(currentProduct, wishlistBtn)
-    addToCart(currentProduct, cartBtn, notificationPopup)
+    addToCart(currentProduct, cartBtn, productNotification)
   }
 
 }
@@ -51,7 +50,7 @@ const showProductDetails = async (div, data) => {
     const wishlistBtn = document.querySelector('.singleHeart')
     const cartBtn = document.querySelector(`.singleCartBtn`)
     addToWishlist(currentProduct, wishlistBtn)
-    addToCart(currentProduct, cartBtn, notificationPopup)
+    addToCart(currentProduct, cartBtn, productNotification)
     if (checkIfAdded(currentProduct.id)) {
       icon.classList.remove("far");
       icon.classList.add("fas");
@@ -77,7 +76,5 @@ window.addEventListener('popstate', async () => {
   }
 })
 
-const errorHandler = () => {
-  console.log('error')
-}
+
 

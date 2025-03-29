@@ -1,6 +1,8 @@
+import {CONFIG} from './config.js'
+
 export async function getProducts(category){
   try {
-    const response = await fetch(`http://localhost:5050/products/${category}`)
+    const response = await fetch(`${CONFIG.API_BASE_URL}/products/${category}`)
     if (!response.ok) {
       throw new Error(`${response.status} - ${response.message}`)
     }
@@ -19,8 +21,7 @@ export async function getProducts(category){
 
 export async function mailListRequest (mailInfo, mailType){
   try{
-    console.log('sendding mail request')
-    const response = await fetch('http://localhost:5050/autoMail', {
+    const response = await fetch(`${CONFIG.API_BASE_URL}/autoMail`, {
       method: 'post',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },

@@ -1,8 +1,9 @@
 import { displayNotification } from "./module.js"
+import {CONFIG }from './config.js'
 
 export default async function checkout(amount, notificationPopup) {
   try {
-    const response = await fetch('http://localhost:5050/createOrder', {
+    const response = await fetch(`${CONFIG.API_BASE_URL}/createOrder`, {
       method: 'post',
       credentials: "include",
       headers: { 'Content-Type': 'application/json' },
@@ -37,7 +38,7 @@ export default async function checkout(amount, notificationPopup) {
         "color": "#007bff"
       },
       "handler": async function (res) {
-        let response = await fetch('http://localhost:5050/verifyOrder', {
+        let response = await fetch(`${CONFIG.API_BASE_URL/verifyOrder}`, {
           method: 'post',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...res, orderId: response.orderId })

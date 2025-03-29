@@ -1,5 +1,5 @@
 import { displayNotification, mailListRequest } from "./module.js"
-const notificationPopup = document.querySelector('.notificationPopup')
+const indexNotification = document.querySelector('.notificationPopup')
 
 document.addEventListener('DOMContentLoaded', () => {
   shopNowEventHandler()
@@ -23,13 +23,23 @@ const contactFormHandler = () => {
     const userData = Object.fromEntries(formData.entries())
     const mailStatus = await mailListRequest(userData, 'userQuery')
     if (mailStatus === 422) {
-      displayNotification('Provided email address is non-existent! Recheck your email address.', notificationPopup)
+      displayNotification('Provided email address is non-existent! Recheck your email address.', indexNotification)
     }
     else if(mailStatus === 200){
-      displayNotification('Thanks for getting in touch! 😊 We’ve received your message and will respond as soon as possible. Stay tuned!', notificationPopup)
+      displayNotification('Thanks for getting in touch! 😊 We’ve received your message and will respond as soon as possible. Stay tuned!', indexNotification)
     }
     else{
-      displayNotification('some error occurred! please try again after some time.', notificationPopup)
+      displayNotification('some error occurred! please try again after some time.', indexNotification)
     }
   })
 }
+
+
+
+
+
+
+
+
+
+

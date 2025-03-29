@@ -3,7 +3,7 @@ import { cartUi, wishlistUi } from './dynamicUi.js'
 import { displayNotification, mailListRequest } from "./module.js";
 import { decreaseQuantity, increaseQuantity, removeFromCart } from "./cart.js";
 import { removeFromWishlist } from "./wishlist.js";
-const notificationPopup = document.querySelector('.notificationPopup')
+const headerNotification = document.querySelector('.notificationPopup')
 
 document.addEventListener('DOMContentLoaded', () => {
   loadComponent("header.html", "headerPlaceholder", headerEventListener);
@@ -89,7 +89,6 @@ const displayCart = () => {
       decreaseQuantity(itemId, quantity)
     }
     else if (e.target.classList.contains('removeBtns') || e.target.closest('.removeBtns')) {
-      console.log('hiiii')
       removeFromCart(itemId)
     }
     cart = JSON.parse(localStorage.getItem("cart")) || []
@@ -101,7 +100,7 @@ const displayCart = () => {
     }
 
     if(e.target.id === 'checkoutBtn'){
-      checkout(totalPrice, notificationPopup)
+      checkout(totalPrice, headerNotification)
     }
   })
 }
@@ -130,6 +129,6 @@ const newsletterFormHandler = async () => {
     if (mailStatus === 422) {
       displayNotification('Provided email address is non-existent! Recheck your email address.', notificationPopup)
     }
-    displayNotification('Thank you for subscribing! You"ll now receive the latest updates and exclusive offers directly in your inbox.', notificationPopup)
+    displayNotification('Thank you for subscribing! You"ll now receive the latest updates and exclusive offers directly in your inbox.', headerNotification)
   })
 }

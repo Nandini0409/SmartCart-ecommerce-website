@@ -36,7 +36,6 @@ const checkIfAlreadyAdded = (currentProduct) => {
 }
 
 export function addToCart(currentProduct, btn, notificationPopup) {
-  console.log(notificationPopup)
   btn.addEventListener('click', (e) => {
     e.stopPropagation()
     let productFoundInCart = checkIfAlreadyAdded(currentProduct)
@@ -57,8 +56,8 @@ export function addToCart(currentProduct, btn, notificationPopup) {
       }
     }
     else {
-      increaseQuantity(productFoundInCart.id)
       displayNotification("Already added in cart! increased item's quantity by 1.", notificationPopup)
+      increaseQuantity(productFoundInCart.id)
     }
   })
 }

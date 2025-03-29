@@ -1,5 +1,6 @@
 import { displayNotification } from "./module.js"
 import { mailListRequest } from "./module.js"
+import {CONFIG} from './config.js'
 
 const params = new URLSearchParams(window.location.search)
 let formCategory = params.get('class')
@@ -31,7 +32,7 @@ const signin = () => {
     e.preventDefault()
     const formData = new FormData(form)
     const userData = Object.fromEntries(formData.entries())
-    try{const response = await fetch('http://localhost:5050/signin', {
+    try{const response = await fetch(`${CONFIG.API_BASE_URL}/signin`, {
       method: 'post',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
@@ -82,7 +83,7 @@ const signup = () => {
       return;
     }
     try{
-      const response = await fetch('http://localhost:5050/signup', {
+      const response = await fetch(`${CONFIG.API_BASE_URL}/signup`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData)
