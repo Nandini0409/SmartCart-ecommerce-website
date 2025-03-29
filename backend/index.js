@@ -17,6 +17,9 @@ app.use(cookieParser())
 app.use(cors({ origin: '*', credentials: true }));
 connectDB()
 
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
 
 app.get('/products/:id', (req, res) => getProducts(req, res));
 
@@ -33,3 +36,5 @@ app.post('/autoMail', (req, res) => autoMail(req, res));
 app.listen(process.env.PORT, () => {
   console.log('Server is running on port', process.env.PORT)
 })
+
+export default app;
