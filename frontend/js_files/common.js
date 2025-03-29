@@ -82,7 +82,6 @@ const displayCart = () => {
     let itemId = e.target.parentElement.parentElement.id.split('article')[1]
     if (e.target.classList.contains('increaseBtns')) {
       increaseQuantity(itemId)
-      displayNotification('Added to cart! You can continue shopping or view cart', notificationPopup)
     }
     else if (e.target.classList.contains('decreaseBtns')) {
       let quantity = document.querySelector(`#quantity${itemId}`).textContent

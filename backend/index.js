@@ -14,7 +14,7 @@ const autoMail = require('./api/routeHandlers/autoMailing');
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({ origin: '*', credentials: true }));
+app.use(cors({ origin: 'https://smartcart-eshop.vercel.app/', credentials: true }));
 connectDB()
 
 app.get('/', (req, res) => {
