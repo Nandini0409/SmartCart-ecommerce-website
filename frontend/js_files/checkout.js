@@ -38,13 +38,14 @@ export default async function checkout(amount, notificationPopup) {
         "color": "#007bff"
       },
       "handler": async function (res) {
-        let response = await fetch(`${CONFIG.API_BASE_URL/verifyOrder}`, {
+        let response = await fetch(`${CONFIG.API_BASE_URL}/verifyOrder`, {
           method: 'post',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ...res, orderId: response.orderId })
         })
         if(response.status === 200){
           displayNotification("Payment successful! Thank you for your order.", notificationPopup);
+          localStorage.setItem("cart", JSON.stringify([]));
         }
         else if(response.status === 400){
           displayNotification("Payment verification failed. Please contact support.", notificationPopup);

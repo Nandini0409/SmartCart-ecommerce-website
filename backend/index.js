@@ -14,7 +14,7 @@ const autoMail = require('./api/routeHandlers/autoMailing');
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({ origin: 'https://smartcart-eshop.vercel.app', credentials: true }));
+app.use(cors({ origin: ['https://smartcart-eshop.vercel.app/', 'http://localhost:5500'], credentials: true }));
 connectDB()
 
 app.get('/', (req, res) => {
@@ -37,7 +37,7 @@ app.listen(process.env.PORT, () => {
   console.log('Server is running on port', process.env.PORT)
 })
 
-export default app;
+module.exports =  app;
 
 
 

@@ -30,6 +30,7 @@ export function createProductDetailCard(product, productDetails) {
 
 export function cartUi(cart, popup) {
   let totalItems = cart.length
+
   let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0)
   totalPrice = (Math.round(totalPrice * 100) / 100)
 
@@ -87,14 +88,6 @@ export function wishlistItemUi(product, wishlistItemList) {
 
 
 
-
-
-// <div id="quantityBtns">
-//   <button id="increaseBtn${product.id}">+</button>
-//   <p id="quantity${product.id}">${product.quantity}</p>
-//   <button id="decreaseBtn${product.id}">-</button>
-  // </div>
-  // <button id="removeBtn${product.id}"><i class="fa-solid fa-xmark"></i></button>`
 
 
 
