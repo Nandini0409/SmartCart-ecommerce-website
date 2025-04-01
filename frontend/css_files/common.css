@@ -546,7 +546,6 @@ input:focus {
 
   .footer-left {
     gap: 35px;
-    /* font-size: 16px; */
   }
 }
 
@@ -624,7 +623,7 @@ input:focus {
 
   .popup {
     height: 600px;
-    max-width: 85%;
+    width: 85vw;
     padding: 20px 10px;
   }
 
@@ -639,12 +638,12 @@ input:focus {
   }
 
   #cartPopup h3 {
-    font-size: 10px;
+    font-size: 8px;
     line-height: 0.7rem;
   }
 
   .popup p {
-    font-size: 10px;
+    font-size: 8px;
   }
 
   .popup img {
@@ -652,12 +651,14 @@ input:focus {
   }
 
   #quantityBtns {
-    gap: 1px;
+    gap: 0;
+    height: 20px;
   }
 
-  #quantityBtns button {
-    padding: 1px 3px;
-    width: 18px;
+  #quantityBtns button{
+    width: 15px;
+    font-size: 10px;
+    height: 18px;
   }
 
   #wishlistPopup {
