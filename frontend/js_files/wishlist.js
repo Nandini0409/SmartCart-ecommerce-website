@@ -2,10 +2,8 @@ let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
 export function removeFromWishlist (productId, icon){
   console.log(productId)
-  console.log('removing...')
   wishlist = wishlist.filter((product) => product.id !== productId)
   localStorage.setItem('wishlist', JSON.stringify(wishlist))
-  console.log(wishlist)
   if(icon){
     icon.classList.remove("fas");
     icon.classList.add("far");

@@ -37,7 +37,7 @@ const autoMail = async (req, res) => {
           🔒 Secure your account by ensuring your login credentials are safe.
           🛍️ Complete your checkout if you were in the middle of shopping.
           
-          Login to Your Account from the website's logn page
+          Login to Your Account from the website's login page
           
           If you didn’t create this account, please ignore this email or contact our support team immediately.
           

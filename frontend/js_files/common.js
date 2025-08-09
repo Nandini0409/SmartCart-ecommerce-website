@@ -34,6 +34,7 @@ const hamburgerMenu = () => {
 }
 
 const displayWishlist = () => {
+  console.log('i am runnig')
   const wishlistBtn = document.getElementById('wishlist')
   const wishlistPopup = document.getElementById('wishlistPopup')
   let wishlist = JSON.parse(localStorage.getItem('wishlist'))
@@ -50,6 +51,7 @@ const displayWishlist = () => {
 
   wishlistPopup.addEventListener('click', (e) => {
     if (e.target.classList.contains('removeBtns') || e.target.closest('.removeBtns')) {
+      console.log('iiii')
       let itemArticleId = e.target.closest('article').id
       removeFromWishlist(itemArticleId)
     }
@@ -71,7 +73,7 @@ const displayCart = () => {
   }
   let totalPrice = 0;
   cartBtn.addEventListener('click', () => {
-    cart = JSON.parse(localStorage.getItem("cart")) || []
+    cart = JSON.parse(localStorage.getItem("cart")) 
     cartPopup.style.display = 'flex';
     overlay.classList.add("active");
     totalPrice = cartUi(cart, cartPopup)
@@ -90,7 +92,7 @@ const displayCart = () => {
     else if (e.target.classList.contains('removeBtns') || e.target.closest('.removeBtns')) {
       removeFromCart(itemId)
     }
-    cart = JSON.parse(localStorage.getItem("cart")) || []
+    cart = JSON.parse(localStorage.getItem("cart"))
     totalPrice = cartUi(cart, cartPopup)
 
     if (e.target.classList.contains('exitBtns') || e.target.closest('.exitBtns')) {

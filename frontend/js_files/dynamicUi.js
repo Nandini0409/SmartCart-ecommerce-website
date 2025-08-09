@@ -4,7 +4,7 @@ export function createProductCard(product, productList) {
   productCard.setAttribute('id', product.id)
   productCard.innerHTML = `<button id="wishlist${product.id}" class="wishlistBtn allHeart">
   <i class="heartIcon far fa-heart" style="color:#005dc0"></i></button>
-  <img class="productListImg" src="./images/serum.webp" alt="${product.name}">
+  <img width="250px" height="auto" class="productListImg" src="${product.image}" alt="${product.name}">
   <h3>${product.name}</h3>
   <p>$${product.price}</p>
   <button class="cartBtn" id="cart${product.id}">Add to cart</button>`
@@ -14,7 +14,7 @@ export function createProductCard(product, productList) {
 export function createProductDetailCard(product, productDetails) {
   let productDetailCard = document.createElement("article")
   productDetailCard.innerHTML = `<div class="productImageContainer"><button class="wishlistBtn singleHeart"><i class="heartIcon far fa-heart" style="color: #0179fd;"></i></button>
-  <img class="productListImg" src="./images/serum.webp" alt="${product.name}">
+  <img class="productListImg" src="${product.image}" alt="${product.name}">
   </div>
   <div class="productDetailContainer">
   <div>
@@ -30,7 +30,6 @@ export function createProductDetailCard(product, productDetails) {
 
 export function cartUi(cart, popup) {
   let totalItems = cart.length
-
   let totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0)
   totalPrice = (Math.round(totalPrice * 100) / 100)
 
@@ -49,7 +48,7 @@ function cartItemUi(product, cartItemList) {
   let cartItem = document.createElement("article")
   cartItem.setAttribute("id", `article${product.id}`)
   cartItem.setAttribute("class", `cartItems`)
-  cartItem.innerHTML = `<img src="./images/serum.webp" alt="${product.name}">
+  cartItem.innerHTML = `<img src="${product.image}" alt="${product.name}">
   <h3>${product.name}</h3>
   <p>${product.price} Rs</p>
   <div id="quantityBtns">

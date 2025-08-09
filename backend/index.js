@@ -11,7 +11,6 @@ const createOrder = require('./api/routeHandlers/createOrder');
 const verifyOrder = require('./api/routeHandlers/verifyOrder');
 const autoMail = require('./api/routeHandlers/autoMailing');
 
-
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({ origin: ['https://smartcart-eshop.vercel.app', 'http://localhost:5500'], credentials: true }));
@@ -37,7 +36,7 @@ app.listen(process.env.PORT, () => {
   console.log('Server is running on port', process.env.PORT)
 })
 
-module.exports =  app;
+module.exports = app;
 
 
 
