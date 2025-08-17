@@ -4,7 +4,7 @@ export function createProductCard(product, productList) {
   productCard.setAttribute('id', product.id)
   productCard.innerHTML = `<button id="wishlist${product.id}" class="wishlistBtn allHeart">
   <i class="heartIcon far fa-heart" style="color:#005dc0"></i></button>
-  <img width="250px" height="auto" class="productListImg" src="${product.image}" alt="${product.name}">
+  <img width="250px" height="auto" class="productListImg" src="./images/serum.webp" alt="${product.name}">
   <h3>${product.name}</h3>
   <p>$${product.price}</p>
   <button class="cartBtn" id="cart${product.id}">Add to cart</button>`
